@@ -12,3 +12,15 @@ services:
       - 3000:3000
     tty:
       true
+  api-stub:
+    build: ./api-stub/app
+    container_name: twitter-trends-front.api-stub
+    command: uvicorn main:app --reload --host 0.0.0.0
+    working_dir: /app
+    environment:
+      - TZ=Asia/Tokyo
+      - PYTHONPATH=/app
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api-stub/app:/app

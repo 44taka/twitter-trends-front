@@ -1,13 +1,21 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import NavBar from '../components/navbar'
+import Tile from '../components/tile'
 
 import { ZipCloudUseCase } from '../usecase/zipcloud'
 import { TwitterTrendsUseCase } from '../usecase/twitter/trends'
 
 
-const Bulma: NextPage = () => {
+type Props = {
+  data: any
+}
+
+const Bulma = ({data}: Props) => {
+  console.log('///////////////////')
+  console.log(data)
+  console.log('///////////////////')
   return (
     <div>
       <Header />
@@ -44,91 +52,29 @@ const Bulma: NextPage = () => {
         </div>
     </section>
 
-    <section className="section">
-        <div className="tile is-ancestor">
-            <div className="tile is-parent">
-                <article className="tile is-child box">
-                    <p className="title is-4">現在</p>
-                    <p className="subtitle is-6">※14時45分</p>
-                    <p><span>1.</span>What is up?</p>
-                    <p><span>2.</span>What is up?</p>
-                    <p><span>3.</span>What is up?</p>
-                    <p><span>4.</span>What is up?</p>
-                    <p><span>5.</span>What is up?</p>
-                    <p><span>6.</span>What is up?</p>
-                    <p><span>7.</span>What is up?</p>
-                    <p><span>8.</span>What is up?</p>
-                    <p><span>9.</span>What is up?</p>
-                    <p><span>10.</span>What is up?</p>
-                    <p><span>11.</span>What is up?</p>
-                    <p><span>12.</span>What is up?</p>
-                    <p><span>13.</span>What is up?</p>
-                    <p><span>14.</span>What is up?</p>
-                    <p><span>15.</span>What is up?</p>
-                    <p><span>16.</span>What is up?</p>
-                    <p><span>17.</span>What is up?</p>
-                    <p><span>18.</span>What is up?</p>
-                    <p><span>19.</span>What is up?</p>
-                    <p><span>20.</span>What is up?</p>
-                </article>
-            </div>
-            <div className="tile is-parent">
-                <article className="tile is-child box">
-                    <p className="title is-4">1時間前</p>
-                    <p className="subtitle is-6">※13時45分</p>
-                    <p><span>1.</span>What is up?</p>
-                    <p><span>2.</span>What is up?</p>
-                    <p><span>3.</span>What is up?</p>
-                    <p><span>4.</span>What is up?</p>
-                    <p><span>5.</span>What is up?</p>
-                    <p><span>6.</span>What is up?</p>
-                    <p><span>7.</span>What is up?</p>
-                    <p><span>8.</span>What is up?</p>
-                    <p><span>9.</span>What is up?</p>
-                    <p><span>10.</span>What is up?</p>
-                    <p><span>11.</span>What is up?</p>
-                    <p><span>12.</span>What is up?</p>
-                    <p><span>13.</span>What is up?</p>
-                    <p><span>14.</span>What is up?</p>
-                    <p><span>15.</span>What is up?</p>
-                    <p><span>16.</span>What is up?</p>
-                    <p><span>17.</span>What is up?</p>
-                    <p><span>18.</span>What is up?</p>
-                    <p><span>19.</span>What is up?</p>
-                    <p><span>20.</span>What is up?</p>
-                </article>
-            </div>
-            <div className="tile is-parent">
-                <article className="tile is-child box">
-                    <p className="title is-4">3時間前</p>
-                    <p className="subtitle is-6">※11時45分</p>
-                    <p><span>1.</span>What is up?</p>
-                    <p><span>2.</span>What is up?</p>
-                    <p><span>3.</span>What is up?</p>
-                    <p><span>4.</span>What is up?</p>
-                    <p><span>5.</span>What is up?</p>
-                    <p><span>6.</span>What is up?</p>
-                    <p><span>7.</span>What is up?</p>
-                    <p><span>8.</span>What is up?</p>
-                    <p><span>9.</span>What is up?</p>
-                    <p><span>10.</span>What is up?</p>
-                    <p><span>11.</span>What is up?</p>
-                    <p><span>12.</span>What is up?</p>
-                    <p><span>13.</span>What is up?</p>
-                    <p><span>14.</span>What is up?</p>
-                    <p><span>15.</span>What is up?</p>
-                    <p><span>16.</span>What is up?</p>
-                    <p><span>17.</span>What is up?</p>
-                    <p><span>18.</span>What is up?</p>
-                    <p><span>19.</span>What is up?</p>
-                    <p><span>20.</span>What is up?</p>
-                </article>
-            </div>
-        </div>
-      </section>
+    <Tile />
+
+
+
       <Footer />
     </div>
   )
+}
+
+export async function getServerSideProps<GetServerSideProps>() {
+  console.log('getServerSideProps!!!')
+
+  const zipcloud_usecase = new ZipCloudUseCase()
+  const result = await zipcloud_usecase.search('1706057')
+
+  // const twitter_trends_usecase = new TwitterTrendsUseCase()
+  // const result = await twitter_trends_usecase.find_all()
+
+  return {
+    props: {
+      data: result
+    }
+  }
 }
 
 export default Bulma

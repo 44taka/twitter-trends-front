@@ -1,0 +1,155 @@
+{
+  "message": "get twitter trends all",
+  "result": [
+    {
+      "label": "現在",
+      "trends": [
+        {
+          "id": 1,
+          "rank": 1,
+          "name": "#MUSICFAIR",
+          "url": "http://twitter.com/search?q=%23MUSICFAIR",
+          "tweet_volume": 13200,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 2,
+          "rank": 2,
+          "name": "#PRIMALS",
+          "url": "http://twitter.com/search?q=%23PRIMALS",
+          "tweet_volume": 21189,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 3,
+          "rank": 3,
+          "name": "#Liella_2nd_大阪Day1",
+          "url": "http://twitter.com/search?q=%23Liella_2nd_%E5%A4%A7%E9%98%AADay1",
+          "tweet_volume": 13113,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 4,
+          "rank": 4,
+          "name": "横浜優勝",
+          "url": "http://twitter.com/search?q=%E6%A8%AA%E6%B5%9C%E5%84%AA%E5%8B%9D",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 5,
+          "rank": 5,
+          "name": "どらほー",
+          "url": "http://twitter.com/search?q=%E3%81%A9%E3%82%89%E3%81%BB%E3%83%BC",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        }
+      ]
+    },
+    {
+      "label": "1時間前",
+      "trends": [
+        {
+          "id": 1,
+          "rank": 1,
+          "name": "#MUSICFAIR",
+          "url": "http://twitter.com/search?q=%23MUSICFAIR",
+          "tweet_volume": 13200,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 2,
+          "rank": 2,
+          "name": "#PRIMALS",
+          "url": "http://twitter.com/search?q=%23PRIMALS",
+          "tweet_volume": 21189,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 3,
+          "rank": 3,
+          "name": "#Liella_2nd_大阪Day1",
+          "url": "http://twitter.com/search?q=%23Liella_2nd_%E5%A4%A7%E9%98%AADay1",
+          "tweet_volume": 13113,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 4,
+          "rank": 4,
+          "name": "横浜優勝",
+          "url": "http://twitter.com/search?q=%E6%A8%AA%E6%B5%9C%E5%84%AA%E5%8B%9D",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 5,
+          "rank": 5,
+          "name": "どらほー",
+          "url": "http://twitter.com/search?q=%E3%81%A9%E3%82%89%E3%81%BB%E3%83%BC",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        }
+      ]
+    },
+    {
+      "label": "3時間前",
+      "trends": [
+        {
+          "id": 1,
+          "rank": 1,
+          "name": "#MUSICFAIR",
+          "url": "http://twitter.com/search?q=%23MUSICFAIR",
+          "tweet_volume": 13200,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 2,
+          "rank": 2,
+          "name": "#PRIMALS",
+          "url": "http://twitter.com/search?q=%23PRIMALS",
+          "tweet_volume": 21189,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 3,
+          "rank": 3,
+          "name": "#Liella_2nd_大阪Day1",
+          "url": "http://twitter.com/search?q=%23Liella_2nd_%E5%A4%A7%E9%98%AADay1",
+          "tweet_volume": 13113,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 4,
+          "rank": 4,
+          "name": "横浜優勝",
+          "url": "http://twitter.com/search?q=%E6%A8%AA%E6%B5%9C%E5%84%AA%E5%8B%9D",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        },
+        {
+          "id": 5,
+          "rank": 5,
+          "name": "どらほー",
+          "url": "http://twitter.com/search?q=%E3%81%A9%E3%82%89%E3%81%BB%E3%83%BC",
+          "tweet_volume": 0,
+          "created_at": "2022-06-04T09:46:05.867885Z",
+          "updated_at": "2022-06-04T09:46:05.867971Z"
+        }
+      ]
+    }
+  ]
+}
