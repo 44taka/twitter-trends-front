@@ -29,3 +29,7 @@ async def delete_sample(request: Request):
 @router.get("/twitter/trends")
 async def get_twitter_trends(request: Request):
     return helper.get_json("twitter_trends_kai.json")
+
+@router.get("/twitter/trends2")
+async def get_twitter_trends(request: Request):
+    return helper.get_json("twitter_trends_kai2.json")

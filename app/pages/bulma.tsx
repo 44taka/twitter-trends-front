@@ -1,10 +1,9 @@
-import type { NextPage, GetServerSideProps } from 'next'
+import React, { useState } from 'react'
+
 import Header from '../components/header'
 import Footer from '../components/footer'
 import NavBar from '../components/navbar'
 import Tile from '../components/tile'
-
-import { ZipCloudUseCase } from '../usecase/zipcloud'
 import { TwitterTrendsUseCase } from '../usecase/twitter/trends'
 
 
@@ -13,14 +12,13 @@ type Props = {
 }
 
 const Bulma = ({data}: Props) => {
-  console.log('///////////////////')
-  console.log(data)
-  console.log('///////////////////')
+  const [dt, setData] = useState(data.result)
+  const [isLoading, setLoading] = useState(false)
+
   return (
     <div>
       <Header />
       <NavBar />
-
       <section className="section">
         <div className="field has-addons">
             <div className="control">
@@ -34,42 +32,26 @@ const Bulma = ({data}: Props) => {
             </div>
             <div className="control">
                 <a className="button is-info" onClick={async () => {
-                  // console.log('+++++++++++++++++++++')
-                  // const elem = document.getElementById('woeid').value
-                  // console.log(elem)
-                  console.log('---------------------')
-                  const zcuc = new ZipCloudUseCase()
-                  const r3 = await zcuc.search('1706057')
-                  console.log(r3)
-                  console.log('*********************')
+                  setLoading(true)
                   const ttuc = new TwitterTrendsUseCase()
                   const r = await ttuc.find_all()
-                  console.log(r)
+                  setData(r.result)
+                  setLoading(false)
                 }}>
                     Search
                 </a>
             </div>
         </div>
-    </section>
-
-    <Tile />
-
-
-
+      </section>
+      <Tile data={dt} isLoading={isLoading}/>
       <Footer />
     </div>
   )
 }
 
-export async function getServerSideProps<GetServerSideProps>() {
-  console.log('getServerSideProps!!!')
-
-  const zipcloud_usecase = new ZipCloudUseCase()
-  const result = await zipcloud_usecase.search('1706057')
-
-  // const twitter_trends_usecase = new TwitterTrendsUseCase()
-  // const result = await twitter_trends_usecase.find_all()
-
+export async function getServerSideProps<Props>() {
+  const twitter_trends_usecase = new TwitterTrendsUseCase(true)
+  const result = await twitter_trends_usecase.find_all()
   return {
     props: {
       data: result

@@ -4,10 +4,11 @@ import axios, { AxiosInstance } from 'axios'
 export class TwitterTrendsApi {
     private _axios: AxiosInstance
 
-    constructor() {
+    constructor(private ssr_flg: boolean = false) {
         this._axios = axios.create({
             // TODO: 環境によってURLを動的に変更させる
-            baseURL: 'http://localhost:8000/stub',
+            // TODO: ローカル時のみ
+            baseURL: this.ssr_flg ? 'http://api-stub:8000/stub' : 'http://localhost:8000/stub',
             responseType: 'json',
             headers: {
                 'Content-Type': 'application/json',
