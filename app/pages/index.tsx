@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from '../components/commons/header'
 import Hero from '../components/commons/hero'
@@ -6,6 +6,7 @@ import Footer from '../components/commons/footer'
 
 // 子コンポーネントから親ページにイベントを通知するには・・？
 // import SearchField from '../components/index/search_field'
+import { Ranking } from '../components/index/ranking'
 
 import { TwitterTrendsApi } from '../infrastructure/api/twitter/trends'
 import { TwitterTrendsUseCase } from '../usecase/twitter/trends'
@@ -16,11 +17,14 @@ import { WoeidUseCase} from '../usecase/woeid'
 
 type Props = {
     woeid: any,
-    twitter_trends: any
+    trends: any
 }
 
-const Home = ({woeid, twitter_trends}: Props) => {
-  return (
+const Home = ({woeid, trends}: Props) => {
+    const [twitter_trends, setTwitterTrends] = useState(trends)
+    const [isLoading, setLoading] = useState(false)
+
+    return (
     <div>
       <Header />
       <Hero />
@@ -32,51 +36,29 @@ const Home = ({woeid, twitter_trends}: Props) => {
                 <div className="control">
                     <div className="select">
                         <select>
-                            {woeid.map((data: any) => {
+                            {woeid.map((data: any, index: number) => {
                                 return (
-                                    <option value={data.woeid}>{data.name}</option>
+                                    <option key={index} value={data.woeid}>{data.name}</option>
                                 )
                             })}
                         </select>
                     </div>
                 </div>
                 <div className="control">
-                    <a className="button is-info">Search</a>
+                    <a className="button is-info" onClick={async () => {
+                        setLoading(true)
+                        // // トレンド情報取得
+                        // const twitter_trends_api = new TwitterTrendsApi()
+                        // const twitter_trends_usecase = new TwitterTrendsUseCase(twitter_trends_api)
+                        // const twitter_trends_result = await twitter_trends_usecase.get()
+                        // setTwitterTrends(twitter_trends_result)
+                        setLoading(false)
+                    }}>
+                        Search
+                    </a>
                 </div>
             </div>
-
-            <div className="table-container">
-                <table className="table is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th><abbr title="Rank">Rank</abbr></th>
-                            <th><abbr title="Name">Name</abbr></th>
-                            <th><abbr title="URL">URL</abbr></th>
-                            <th><abbr title="Volume">Volume</abbr></th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th><abbr title="Rank">Rank</abbr></th>
-                            <th><abbr title="Name">Name</abbr></th>
-                            <th><abbr title="URL">URL</abbr></th>
-                            <th><abbr title="Volume">Volume</abbr></th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        {twitter_trends.result.map((data: any) => {
-                            return (
-                                <tr>
-                                    <th>{data.rank}</th>
-                                    <td>{data.name}</td>
-                                    <td><a href={data.url} title={data.name}>{data.name}</a></td>
-                                    <td>{data.tweet_volume}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-            </div>
+            <Ranking twitter_trends={twitter_trends} />
         </section>
         <Footer />
     </div>  
@@ -97,7 +79,7 @@ export async function getServerSideProps<Props>() {
     return {
       props: {
         woeid: woeid_result,
-        twitter_trends: twitter_trends_result
+        trends: twitter_trends_result
       }
     }
 }
