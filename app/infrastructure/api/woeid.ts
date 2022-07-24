@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios'
 
 
-export class TwitterTrendsApi {
+export class WoeidApi {
     private _axios: AxiosInstance
 
     constructor() {
@@ -16,19 +16,9 @@ export class TwitterTrendsApi {
         })
     }
 
-    async find() {
-        try {
-            const result = await this._axios.get('/twitter/trends3')
-            return result.data
-        } catch(e) {
-            console.log('error interface!')
-            throw e
-        }
-    }
-
     async find_all() {
         try {
-            const result = await this._axios.get('/twitter/trends')
+            const result = await this._axios.get('/woeid')
             return result.data
         } catch(e) {
             console.log('error interface!')

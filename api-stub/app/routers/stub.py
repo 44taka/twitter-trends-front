@@ -33,3 +33,11 @@ async def get_twitter_trends(request: Request):
 @router.get("/twitter/trends2")
 async def get_twitter_trends(request: Request):
     return helper.get_json("twitter_trends_kai2.json")
+
+@router.get("/twitter/trends3")
+async def get_twitter_trends(request: Request):
+    return helper.get_json("twitter_trends.json")
+
+@router.get("/woeid")
+async def get_twitter_trends(request: Request):
+    return helper.get_json("woeid.json")

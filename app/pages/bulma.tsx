@@ -6,6 +6,9 @@ import NavBar from '../components/navbar'
 import Tile from '../components/tile'
 import { TwitterTrendsUseCase } from '../usecase/twitter/trends'
 
+import { WoeidApi } from '../infrastructure/api/woeid'
+import { WoeidUseCase} from '../usecase/woeid'
+
 
 type Props = {
   data: any
@@ -50,6 +53,13 @@ const Bulma = ({data}: Props) => {
 }
 
 export async function getServerSideProps<Props>() {
+  const woeid_api = new WoeidApi()
+  const woeid_usecase = new WoeidUseCase(woeid_api)
+  const ret_woeid = woeid_usecase.get()
+  console.log('+++++++++++++++')
+  console.log(ret_woeid)
+  console.log('+++++++++++++++')
+
   const twitter_trends_usecase = new TwitterTrendsUseCase(true)
   const result = await twitter_trends_usecase.find_all()
   return {
