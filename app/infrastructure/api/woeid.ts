@@ -1,7 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
+import { WoeidApiRepository } from '../../domain/repository/woeid'
+import { WoeidModel } from '../../domain/model/woeid'
 
 
-export class WoeidApi {
+export class WoeidApi implements WoeidApiRepository {
     private _axios: AxiosInstance
 
     constructor() {
@@ -16,12 +18,12 @@ export class WoeidApi {
         })
     }
 
-    async find_all() {
+    async find_all(): Promise<WoeidModel[]> {
         try {
-            const result = await this._axios.get('/woeid')
+            const result = await this._axios.get<WoeidModel[]>('/woeid')
             return result.data
         } catch(e) {
-            console.log('error interface!')
+            console.error(e)
             throw e
         }
     }
