@@ -8,9 +8,7 @@ export class WoeidApi implements WoeidApiRepository {
 
     constructor() {
         this._axios = axios.create({
-            // TODO: 環境によってURLを動的に変更させる
-            // TODO: ローカル時のみ
-            baseURL: 'http://api-stub:8000/stub',
+            baseURL: 'http://twitter-trends-api.dosankoweb.work',
             responseType: 'json',
             headers: {
                 'Content-Type': 'application/json',
