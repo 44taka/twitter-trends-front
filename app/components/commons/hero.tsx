@@ -8,7 +8,7 @@ export default function Hero() {
                 <div className="container">
                     <div className="columns is-vcentered">
                         <div className="column">
-                            <h1 className="title is-3 is-size-4-mobile site-title"><a href="/">44taka</a></h1>
+                            <h1 className="title is-3 is-size-4-mobile site-title">44taka</h1>
                         </div>
                     </div>
                 </div>
