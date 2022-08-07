@@ -1,7 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
+import { TwitterTrendsApiRepository } from '../../../domain/repository/twitter/trends'
+import { TwitterTrendsApiModel } from '../../../domain/model/twitter/trends'
 
 
-export class TwitterTrendsApi {
+export class TwitterTrendsApi implements TwitterTrendsApiRepository {
     private _axios: AxiosInstance
 
     constructor() {
@@ -16,22 +18,22 @@ export class TwitterTrendsApi {
         })
     }
 
-    async find() {
+    async find(): Promise<TwitterTrendsApiModel> {
         try {
-            const result = await this._axios.get('/twitter/trends3')
+            const result = await this._axios.get<TwitterTrendsApiModel>('/twitter/trends3')
             return result.data
         } catch(e) {
-            console.log('error interface!')
+            console.error(e)
             throw e
         }
     }
 
-    async find_all() {
+    async find_all(): Promise<TwitterTrendsApiModel> {
         try {
-            const result = await this._axios.get('/twitter/trends')
+            const result = await this._axios.get<TwitterTrendsApiModel>('/twitter/trends')
             return result.data
         } catch(e) {
-            console.log('error interface!')
+            console.error(e)
             throw e
         }
     }

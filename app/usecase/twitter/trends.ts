@@ -1,33 +1,33 @@
-import { TwitterTrendsApi } from '../../infrastructure/api/twitter/trends'
+import { TwitterTrendsUseCaseRepository, TwitterTrendsApiRepository } from '../../domain/repository/twitter/trends'
+import { TwitterTrendsApiModel } from '../../domain/model/twitter/trends'
 
 
-// TODO: インフラ層はDI注入で。
-export class TwitterTrendsUseCase{
+export class TwitterTrendsUseCase implements TwitterTrendsUseCaseRepository {
 
-    private twitter_trends_api: TwitterTrendsApi
+    private twitter_trends_api: TwitterTrendsApiRepository
 
-    constructor(twitter_trends_api: TwitterTrendsApi) {
+    constructor(twitter_trends_api: TwitterTrendsApiRepository) {
         this.twitter_trends_api = twitter_trends_api
     }
 
     // TODO: ここでデータ加工する
-    async get() {
+    async get(): Promise<TwitterTrendsApiModel> {
         try {
             const result = await this.twitter_trends_api.find()
             return result
         } catch(e) {
-            console.log('error usecase')
+            console.error(e)
             throw e
         }
     }
 
     // TODO: ここでデータ加工する
-    async find_all() {
-        try {
+    async find_all(): Promise<TwitterTrendsApiModel> {
+            try {
             const result = await this.twitter_trends_api.find_all()
             return result
         } catch(e) {
-            console.log('error usecase')
+            console.error(e)
             throw e
         }
     }
