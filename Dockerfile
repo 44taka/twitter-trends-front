@@ -5,5 +5,5 @@ COPY ./app /app
 WORKDIR /app
 
 RUN yarn install
-CMD ["yarn", "build"]
+RUN yarn build
 ENTRYPOINT ["yarn", "start"]
