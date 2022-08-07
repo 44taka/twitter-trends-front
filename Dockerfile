@@ -4,5 +4,5 @@ RUN mkdir /app
 COPY ./app /app
 WORKDIR /app
 
-ENTRYPOINT ["yarn", "build"]
+RUN yarn build
 ENTRYPOINT ["yarn", "start"]
