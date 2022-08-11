@@ -4,9 +4,7 @@ const nextConfig = {
   images: {
     domains: ['bulma.io'],
   },
-  experimental: {
-    outputStandalone: true,
-  },
+  output: 'standalone',
 }
 
 module.exports = nextConfig
