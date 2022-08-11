@@ -3,6 +3,7 @@ FROM node:18.4.0 AS builder
 RUN mkdir /app
 COPY ./app /app
 WORKDIR /app
+RUN ls -Ral /app
 RUN yarn install --frozen-lockfile --production=false
 RUN yarn build
 # RUN ls -la /app/.node_modules
