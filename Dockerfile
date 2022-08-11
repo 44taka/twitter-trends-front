@@ -7,7 +7,7 @@ RUN ls -Ral /app
 RUN yarn install --frozen-lockfile --production=false
 RUN yarn build
 # RUN ls -la /app/.node_modules
-RUN ls -Ral /app/.next
+RUN ls -Ral /app
 
 FROM node:18.4.0 AS runner
 
