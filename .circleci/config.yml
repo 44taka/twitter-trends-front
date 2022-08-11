@@ -14,10 +14,10 @@ jobs:
           name: Git push dokku
           command: | 
             git push dokku main:master
-      - run:
-          name: Run app build and start
-          command: | 
-            ssh ${SERVER_USER}@${SERVER_HOST} 'dokku run twitter-trends-front /bin/bash -c "yarn build && yarn start"'
+      # - run:
+      #     name: Run app build and start
+      #     command: | 
+      #       ssh ${SERVER_USER}@${SERVER_HOST} 'dokku run twitter-trends-front /bin/bash -c "yarn build && yarn start"'
 
 workflows:
   Deploy:
