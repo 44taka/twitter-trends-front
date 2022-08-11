@@ -3,7 +3,7 @@ FROM node:18.4.0 AS builder
 RUN mkdir /app
 COPY ./app /app
 WORKDIR /app
-RUN yarn install --frozen-lockfile --production=false
+RUN yarn install
 RUN yarn build
 RUN ls -a /app/.next
 
