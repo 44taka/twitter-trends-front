@@ -5,6 +5,7 @@ COPY ./app /app
 WORKDIR /app
 RUN yarn install
 RUN yarn build
+RUN ls -la /app/.node_modules
 RUN ls -la /app/.next
 
 FROM node:18.4.0 AS runner
