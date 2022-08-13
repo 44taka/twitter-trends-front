@@ -3,10 +3,10 @@ FROM node:18.4.0 AS builder
 RUN mkdir /app
 # COPY ./app /app
 WORKDIR /app
-COPY ./app/package.json /app
-COPY ./app/yarn.lock /app
+# COPY ./app/package.json ./
+# COPY ./app/yarn.lock ./
+COPY ./app .
 RUN yarn install --frozen-lockfile --production=false
-COPY ./app /app
 RUN yarn build
 
 FROM node:18.4.0 AS runner
