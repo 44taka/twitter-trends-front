@@ -1,13 +1,13 @@
 FROM node:18.4.0 AS builder
 
 RUN mkdir /app
-COPY ./app /app
-WORKDIR /app
-RUN ls -Ral /app
+# COPY ./app /app
+# WORKDIR /app
+COPY ./app/package.json ./
+COPY ./app/yarn.lock ./
 RUN yarn install --frozen-lockfile --production=false
+COPY . .
 RUN yarn build
-# RUN ls -la /app/.node_modules
-RUN ls -Ral /app
 
 FROM node:18.4.0 AS runner
 
