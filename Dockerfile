@@ -3,10 +3,9 @@ FROM node:18.4.0 AS builder
 RUN mkdir /app
 # COPY ./app /app
 WORKDIR /app
-COPY ./app/package.json ./
-COPY ./app/yarn.lock ./
-# RUN yarn install --frozen-lockfile --production=false
-RUN yarn install
+COPY ./app/package.json /app
+COPY ./app/yarn.lock /app
+RUN yarn install --frozen-lockfile --production=false
 COPY ./app /app
 RUN yarn build
 
