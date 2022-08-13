@@ -6,12 +6,12 @@ RUN mkdir /app
 COPY ./app/package.json ./
 COPY ./app/yarn.lock ./
 RUN yarn install --frozen-lockfile --production=false
-COPY ./app /app
+COPY ./app .
 RUN yarn build
 
 FROM node:18.4.0 AS runner
 
-COPY --from=builder /app/next.config.js ./
+# COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/.next/standalone ./
