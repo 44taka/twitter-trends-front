@@ -2,25 +2,25 @@ FROM node:18.4.0 AS builder
 
 RUN mkdir /app
 # COPY ./app /app
-# WORKDIR /app
+WORKDIR /app
 COPY ./app/package.json ./
 COPY ./app/yarn.lock ./
 # RUN yarn install --frozen-lockfile --production=false
 RUN yarn install
-COPY ./app .
+COPY ./app /app
 RUN yarn build
 
 FROM node:18.4.0 AS runner
 
-# COPY --from=builder /app/next.config.js ./
-# COPY --from=builder /app/public ./public
-# COPY --from=builder /app/.next/static ./.next/static
-# COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
 
 # COPY --from=builder ./next.config.js ./
-COPY --from=builder ./public ./public
-COPY --from=builder ./.next/static ./.next/static
-COPY --from=builder ./.next/standalone ./
+# COPY --from=builder ./public ./public
+# COPY --from=builder ./.next/static ./.next/static
+# COPY --from=builder ./.next/standalone ./
 
 ENV NODE_ENV=production
 ENV PORT 80
