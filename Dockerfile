@@ -6,7 +6,7 @@ RUN mkdir /app
 COPY ./app/package.json ./
 COPY ./app/yarn.lock ./
 RUN yarn install --frozen-lockfile --production=false
-COPY ./app .
+COPY ./app /app
 RUN yarn build
 
 FROM node:18.4.0 AS runner
